@@ -9,8 +9,8 @@ WIP
 ## Usage
 
 ```
-$ git clone --recursive git@github.com:myokoym/typing-game-en-ja
-$ cd typing-game-en-ja
-$ bundle
-$ ruby window.rb
+git clone --recursive git@github.com:myokoym/typing-game-en-ja.git
+cd typing-game-en-ja
+bundle
+ruby window.rb
 ```
