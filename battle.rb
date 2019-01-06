@@ -1,14 +1,14 @@
 module MyTyping
   class Battle
-    def initialize
+    def initialize(window)
+      @window = window
       @font = Gosu::Font.new(20)
       @score = 0
       @input_text = ""
       @current_key = nil
       @comment = nil
       @comment_time = 0
-      @dic = CSV.read("EJDict/release/ejdic-hand-utf8.txt", col_sep: "\t", quote_char: "_").to_a
-      @current_word = @dic.sample
+      @current_word = @window.dic.sample
     end
 
     def update
@@ -22,7 +22,7 @@ module MyTyping
         @score += 1
         @comment = nil
         @comment_time = 0
-        @current_word = @dic.sample
+        @current_word = @window.dic.sample
         @input_text = ""
       end
     end

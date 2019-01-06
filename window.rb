@@ -10,10 +10,13 @@ module MyTyping
   end
 
   class Window < Gosu::Window
+    attr_reader :dic
+
     def initialize
       super 640, 480
       self.caption = "MyTyping"
-      @battle = Battle.new
+      @dic = CSV.read("EJDict/release/ejdic-hand-utf8.txt", col_sep: "\t", quote_char: "_").to_a
+      @battle = Battle.new(self)
     end
 
     def update
