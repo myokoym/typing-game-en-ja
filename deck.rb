@@ -36,14 +36,13 @@ module MyTyping
         @input_text.chop!
         search
       when Gosu::KB_UP
-        @dic_cursor -= 1
-        @dic_cursor = 0 if @dic_cursor < 0
+        move_dic_cursor(-1)
       when Gosu::KB_DOWN
-        @dic_cursor += 1
+        move_dic_cursor(1)
       when Gosu::KB_PAGE_UP
-        @dic_cursor -= 20
+        move_dic_cursor(-20)
       when Gosu::KB_PAGE_DOWN
-        @dic_cursor += 20
+        move_dic_cursor(20)
       else
         char = Gosu.button_id_to_char(id)
         if char != @current_key
@@ -66,6 +65,15 @@ module MyTyping
         @dic_cursor = @no_searched_dic_cursor
       else
         @dic_cursor = 0
+      end
+    end
+
+    def move_dic_cursor(movement)
+      new_dic_cursor = @dic_cursor + movement
+      if new_dic_cursor < 0
+        @dic_cursor = 0
+      elsif @searched_dic[new_dic_cursor]
+        @dic_cursor = new_dic_cursor
       end
     end
 
