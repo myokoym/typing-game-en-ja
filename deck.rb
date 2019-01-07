@@ -40,6 +40,10 @@ module MyTyping
         @dic_cursor = 0 if @dic_cursor < 0
       when Gosu::KB_DOWN
         @dic_cursor += 1
+      when Gosu::KB_PAGE_UP
+        @dic_cursor -= 20
+      when Gosu::KB_PAGE_DOWN
+        @dic_cursor += 20
       else
         char = Gosu.button_id_to_char(id)
         if char != @current_key
