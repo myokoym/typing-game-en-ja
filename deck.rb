@@ -86,7 +86,7 @@ module MyTyping
       end
       begin
         @searched_dic = @window.dic.select {|word| /#{search_text}/i =~ word[0] }
-      rescue ArgumentError
+      rescue ArgumentError, RegexpError
         @searched_dic = []
       end
     end
