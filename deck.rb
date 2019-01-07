@@ -11,6 +11,7 @@ module MyTyping
       @no_searched_dic_cursor = 0
       @input_text = ""
       @searched_dic = @window.dic
+      @regexp_search = true
     end
 
     def update
@@ -78,8 +79,16 @@ module MyTyping
     end
 
     def search
-      @searched_dic = @window.dic.select {|word| /#{Regexp.escape(@input_text)}/i =~ word[0] }
-      load_or_rest_cursor
+      if @regexp_search
+        search_text = @input_text
+      else
+        search_text = Regexp.escape(@input_text)
+      end
+      begin
+        @searched_dic = @window.dic.select {|word| /#{search_text}/i =~ word[0] }
+      rescue ArgumentError
+        @searched_dic = []
+      end
     end
   end
 end
