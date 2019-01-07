@@ -31,7 +31,7 @@ module MyTyping
     def button_down(id)
       case id
       when Gosu::KB_ESCAPE
-        close
+        super
       when Gosu::KB_BACKSPACE
         save_cursor
         @input_text.chop!

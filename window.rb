@@ -43,7 +43,7 @@ module MyTyping
 
     def button_down(id)
       case id
-      when Gosu::KB_DELETE
+      when Gosu::KB_ESCAPE
         close
       else
         case @mode
